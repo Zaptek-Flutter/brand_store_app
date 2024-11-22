@@ -1,4 +1,6 @@
 import 'package:brand_store_app/data/shirt.dart';
+import 'package:brand_store_app/screens/cart.dart';
+import 'package:brand_store_app/screens/details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,6 +22,9 @@ class _HomeState extends State<Home> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 0,
+        forceMaterialTransparency: true,
         toolbarHeight: 100,
         leadingWidth: 100,
         primary: true,
@@ -53,6 +58,14 @@ class _HomeState extends State<Home> {
             showSelectedLabels: true,
             showUnselectedLabels: true,
             selectedItemColor: Colors.orange,
+            onTap: (index) {
+              setState(() {
+                if (index == 2) {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Cart()));
+                }
+              });
+            },
             items: const [
               BottomNavigationBarItem(
                 icon: ImageIcon(
@@ -180,7 +193,14 @@ class _HomeState extends State<Home> {
                                   child: CircleAvatar(
                                     backgroundColor: Colors.black,
                                     child: IconButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => Details(
+                                                  shirt: Shirt.shirts[index]),
+                                            ));
+                                      },
                                       icon: const ImageIcon(
                                         AssetImage("assets/icons/bag.png"),
                                         color: Colors.white,
