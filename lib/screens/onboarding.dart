@@ -1,3 +1,5 @@
+import 'package:brand_store_app/screens/auth/login_screen.dart';
+import 'package:brand_store_app/screens/auth/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -7,7 +9,6 @@ class Onboarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Column(
         children: [
           Expanded(
@@ -36,7 +37,7 @@ class Onboarding extends StatelessWidget {
                       "Find The\nBest Collections",
                       style: GoogleFonts.imprima(
                           height: 1.2,
-                          color: Colors.black,
+                          color: Theme.of(context).colorScheme.inverseSurface,
                           fontWeight: FontWeight.bold,
                           fontSize: MediaQuery.textScalerOf(context).scale(35)),
                     ),
@@ -48,7 +49,10 @@ class Onboarding extends StatelessWidget {
                       style: GoogleFonts.imprima(
                           fontSize: MediaQuery.textScalerOf(context).scale(12),
                           fontWeight: FontWeight.w300,
-                          color: Colors.black87),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .inverseSurface
+                              .withOpacity(0.7)),
                     ),
                     const SizedBox(
                       height: 30,
@@ -57,15 +61,28 @@ class Onboarding extends StatelessWidget {
                       children: [
                         Expanded(
                           child: OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const SignupScreen(),
+                                ),
+                              );
+                            },
                             style: OutlinedButton.styleFrom(
-                              side: const BorderSide(color: Colors.black),
+                              side: BorderSide(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .inverseSurface),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 20),
                               child: Text(
                                 "Sign Up",
-                                style: GoogleFonts.imprima(color: Colors.black),
+                                style: GoogleFonts.imprima(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inverseSurface),
                               ),
                             ),
                           ),
@@ -75,21 +92,28 @@ class Onboarding extends StatelessWidget {
                         ),
                         Expanded(
                           child: OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const LoginScreen(),
+                                ),
+                              );
+                            },
                             style: OutlinedButton.styleFrom(
                               backgroundColor: Colors.orange,
                               side: const BorderSide(
                                   width: 1, color: Colors.orange),
                             ),
                             child: Padding(
-                              padding: EdgeInsets.symmetric(vertical: 20),
+                              padding: const EdgeInsets.symmetric(vertical: 20),
                               child: Text(
                                 "Sign In",
                                 style: GoogleFonts.imprima(color: Colors.white),
                               ),
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                     const Spacer(

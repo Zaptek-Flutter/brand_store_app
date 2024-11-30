@@ -1,6 +1,8 @@
 import 'package:brand_store_app/models/shirt_model.dart';
+import 'package:brand_store_app/widgets/animated_price.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shimmer/shimmer.dart';
 
 class Details extends StatefulWidget {
   const Details({super.key, required this.shirt});
@@ -18,8 +20,7 @@ class _DetailsState extends State<Details> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.black,
+          foregroundColor: Theme.of(context).colorScheme.inverseSurface,
           elevation: 0,
           forceMaterialTransparency: true,
           toolbarHeight: 100,
@@ -47,19 +48,59 @@ class _DetailsState extends State<Details> {
             )
           ],
         ),
-        backgroundColor: Colors.white,
         body: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20),
           child: Column(
             children: [
               Expanded(
                 flex: 5,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
-                  child: Image.asset(
-                    widget.shirt.image,
-                    fit: BoxFit.cover,
-                  ),
+                child: Hero(
+                  tag: widget.shirt.image,
+                  child: (widget.shirt.networkImage == null ||
+                          widget.shirt.networkImage! == false)
+                      ? ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: Image.asset(
+                            widget.shirt.image,
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                      : ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: Stack(
+                            children: [
+                              Container(
+                                // Replace with your actual height
+                                width: double.infinity,
+                                color: Theme.of(context).canvasColor,
+                              ),
+                              Center(
+                                child: Image.network(
+                                  widget.shirt.image
+                                      .replaceAll('/1.png', '/thumbnail.png'),
+                                  fit: BoxFit.cover,
+                                  loadingBuilder:
+                                      (context, child, loadingProgress) {
+                                    if (loadingProgress == null) {
+                                      return child; // Image  fully loaded
+                                    }
+                                    return Shimmer.fromColors(
+                                      baseColor: Theme.of(context)
+                                          .colorScheme
+                                          .surfaceDim,
+                                      highlightColor: Colors.grey[100]!,
+                                      child: Container(
+                                        // Replace with your actual height
+                                        width: double.infinity,
+                                        color: Colors.grey[300],
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                 ),
               ),
               Expanded(
@@ -77,13 +118,16 @@ class _DetailsState extends State<Details> {
                           Expanded(
                             child: Padding(
                               padding: const EdgeInsets.only(right: 20),
-                              child: Text(
-                                widget.shirt.name,
-                                softWrap: true,
-                                style: GoogleFonts.imprima(
-                                  fontSize: 30,
-                                  height: 1.2,
-                                  fontWeight: FontWeight.bold,
+                              child: Hero(
+                                tag: widget.shirt.name,
+                                child: Text(
+                                  widget.shirt.name,
+                                  softWrap: true,
+                                  style: GoogleFonts.imprima(
+                                    fontSize: 30,
+                                    height: 1.2,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
@@ -127,16 +171,16 @@ class _DetailsState extends State<Details> {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: widget.shirt.sizes.map((e) {
+                        children: widget.shirt.sizes!.map((e) {
                           return FilledButton(
                             onPressed: () {
                               setState(() {
-                                selectedSize = widget.shirt.sizes.indexOf(e);
+                                selectedSize = widget.shirt.sizes!.indexOf(e);
                               });
                             },
                             style: FilledButton.styleFrom(
                               backgroundColor:
-                                  widget.shirt.sizes[selectedSize] == e
+                                  widget.shirt.sizes?[selectedSize] == e
                                       ? Colors.orange
                                       : Colors.black,
                               padding: const EdgeInsets.symmetric(
@@ -153,13 +197,10 @@ class _DetailsState extends State<Details> {
                       const Spacer(),
                       Row(
                         children: [
-                          Text(
-                            "\$${widget.shirt.price}",
-                            style: GoogleFonts.imprima(
-                              fontSize:
-                                  MediaQuery.textScalerOf(context).scale(30),
-                              fontWeight: FontWeight.bold,
-                            ),
+                          Hero(
+                            tag: widget.shirt.price,
+                            child: AnimatedPrice(
+                                priceString: widget.shirt.price.toString()),
                           ),
                           const Spacer(),
                           FilledButton(

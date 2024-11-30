@@ -16,10 +16,11 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
+      primary: true,
       body: IndexedStack(
-        index: selectedIndex,
-        children: const [Home(), SearchScreen(), Cart(), SettingsScreen()],
+        index: 0,
+        children: [Home(), SearchScreen(), Cart(), SettingsScreen()],
       ),
     );
   }

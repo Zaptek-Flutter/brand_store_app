@@ -3,9 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Checkout extends StatelessWidget {
+class Checkout extends StatefulWidget {
   const Checkout({super.key});
 
+  @override
+  State<Checkout> createState() => _CheckoutState();
+}
+
+class _CheckoutState extends State<Checkout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -273,8 +278,10 @@ class Checkout extends StatelessWidget {
                           )),
                         );
                         await Future.delayed(const Duration(seconds: 2));
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Home()));
+                        if (mounted) {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Home()));
+                        }
                       });
                     },
                     style: FilledButton.styleFrom(
