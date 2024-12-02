@@ -43,27 +43,30 @@ Screen recordings are available in the `assets/screenrecords` folder for a visua
 the features:
 
 1. **Authentication Screens**:
-    - [`Auth Screens.mp4`](assets/screenrecords/Auth_Screens.mp4): Demonstrates Login, Sign Up,
+    - [`Auth Screens.mp4`](assets/screenrecords/Auth%20Screens.webm): Demonstrates Login, Sign Up,
       Reset Password, and logging into an existing account.
 
 2. **Explore Tab (Light Theme)**:
-    - [`Explore_Light_Theme.mp4`](assets/screenrecords/Explore_Light_Theme.mp4): Browse items and
+    - [`Explore_Light_Theme.mp4`](assets/screenrecords/Explore%20Light%20Theme.webm): Browse items
+      and
       add a selected
       item to the cart.
 
 3. **Cart and Deletion (Light Theme)**:
-    - [`Cart_And_Deletion_Light_Theme.mp4`](assets/screenrecords/Cart_And_Deletion_Light_Theme.mp4):
+    - [`Cart_And_Deletion_Light_Theme.mp4`](assets/screenrecords/Cart%20And%20Deletion%20Light%20Theme.webm):
       View items in the cart and delete them.
 
 4. **Search Functionality (Light Theme)**:
-    - [`Search_Light_Theme.mp4`](assets/screenrecords/Search_Light_Theme.mp4): Walkthrough of the
+    - [`Search_Light_Theme.mp4`](assets/screenrecords/Search%20Light%20Theme.webm): Walkthrough of
+      the
       search functionality, including category-based search.
 
 5. **Checkout Process**:
-    - [`Checkout.mp4`](assets/screenrecords/Checkout.mp4): Demonstrates the checkout flow.
+    - [`Checkout.mp4`](assets/screenrecords/Checkout.webm): Demonstrates the checkout flow.
 
 6. **Light and Dark Themes**:
-    - [`Light_And_Dark_Theme.mp4`](assets/screenrecords/Light_And_Dark_Theme.mp4): Toggles between
+    - [`Light_And_Dark_Theme.mp4`](assets/screenrecords/Light%20And%20Dark%20Theme.webm): Toggles
+      between
       light and dark themes and logs out.
 
 ---
