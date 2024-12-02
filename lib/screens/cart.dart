@@ -1,25 +1,27 @@
 import 'package:brand_store_app/data/shirt.dart';
 import 'package:brand_store_app/models/shirt_model.dart';
-import 'package:brand_store_app/screens/checkout.dart';
+import 'package:brand_store_app/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:shimmer/shimmer.dart';
 
-class Cart extends StatefulWidget {
+class Cart extends ConsumerStatefulWidget {
   const Cart({super.key});
 
   @override
-  State<Cart> createState() => _CartState();
+  ConsumerState<Cart> createState() => _CartState();
 }
 
-class _CartState extends State<Cart> {
+class _CartState extends ConsumerState<Cart> {
   final List<ShirtModel> selectedItems = Shirt.allItems();
   final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
 
-  void _removeItem(int index) {
-    final removedItem = selectedItems[index];
-
+  void _removeItem(int index, ref) {
+    final removedItem = ref.read(cartProvider)[index];
+    ref.read(cartProvider.notifier).removeItem(removedItem);
     // Remove the item from the list with an animation
     selectedItems.removeAt(index);
     _listKey.currentState?.removeItem(
@@ -45,8 +47,9 @@ class _CartState extends State<Cart> {
     setState(() {});
   }
 
-  Widget _buildListItem(BuildContext context, ShirtModel selectedShirt,
+  Widget _buildListItem(BuildContext context, CartItem selectedCartItem,
       int index, Animation<double> animation) {
+    final selectedShirt = selectedCartItem.shirt;
     return SlideTransition(
       position: animation.drive(
         Tween<Offset>(
@@ -86,7 +89,7 @@ class _CartState extends State<Cart> {
                           ),
                           const Spacer(),
                           IconButton(
-                            onPressed: () => _removeItem(index),
+                            onPressed: () => _removeItem(index, ref),
                             icon: const Icon(
                               Icons.delete_outline,
                               color: Colors.white,
@@ -199,7 +202,7 @@ class _CartState extends State<Cart> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        "x1",
+                        "x${selectedCartItem.quantity}",
                         style: GoogleFonts.imprima(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
@@ -216,6 +219,7 @@ class _CartState extends State<Cart> {
 
   @override
   Widget build(BuildContext context) {
+    final cartItems = ref.watch(cartProvider);
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Theme.of(context).colorScheme.inverseSurface,
@@ -225,7 +229,10 @@ class _CartState extends State<Cart> {
         leadingWidth: 100,
         primary: true,
         centerTitle: true,
-        title: Text("Cart", style: GoogleFonts.imprima(fontSize: 25)),
+        title: Text(
+          "Cart",
+          style: GoogleFonts.imprima(fontSize: 25),
+        ),
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -251,16 +258,28 @@ class _CartState extends State<Cart> {
           ),
           const SizedBox(height: 20),
           Expanded(
-            child: AnimatedList(
-              key: _listKey,
-              initialItemCount: selectedItems.length,
-              itemBuilder: (context, index, animation) {
-                final selectedShirt = selectedItems[index];
-                return _buildListItem(context, selectedShirt, index, animation);
-              },
-            ),
+            child: cartItems.isEmpty
+                ? Center(
+                    child: Text(
+                    "No items in cart",
+                    style: GoogleFonts.imprima(
+                      fontSize: 30,
+                      color: Theme.of(context)
+                          .colorScheme
+                          .inverseSurface
+                          .withOpacity(0.7),
+                    ),
+                  ))
+                : AnimatedList(
+                    key: _listKey,
+                    initialItemCount: cartItems.length,
+                    itemBuilder: (context, index, animation) {
+                      final selectedCartItem = cartItems[index];
+                      return _buildListItem(
+                          context, selectedCartItem, index, animation);
+                    },
+                  ),
           ),
-          // The rest of the layout for "Total Items", "Standard Delivery", "Check Out" remains the same
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Column(
@@ -269,7 +288,7 @@ class _CartState extends State<Cart> {
                 Row(
                   children: [
                     Text(
-                      "Total Items (3)",
+                      "Total Items (${cartItems.length})",
                       style: GoogleFonts.imprima(
                         color: Theme.of(context)
                             .colorScheme
@@ -280,7 +299,7 @@ class _CartState extends State<Cart> {
                     ),
                     const Spacer(),
                     Text(
-                      '\$ 150.00',
+                      '\$ ${(ref.watch(cartProvider.notifier).totalCost).toStringAsFixed(2)}',
                       style: GoogleFonts.imprima(
                           fontSize: 20, fontWeight: FontWeight.bold),
                     )
@@ -326,7 +345,7 @@ class _CartState extends State<Cart> {
                     ),
                     const Spacer(),
                     Text(
-                      '\$ 162.00',
+                      '\$ ${(ref.watch(cartProvider.notifier).totalCost + 12).toStringAsFixed(2)}',
                       style: GoogleFonts.imprima(
                           fontSize: 20, fontWeight: FontWeight.bold),
                     )
@@ -338,11 +357,33 @@ class _CartState extends State<Cart> {
                 Center(
                   child: FilledButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Checkout(),
-                          ));
+                      if (cartItems.isEmpty) {
+                        showDialog(
+                          context: context,
+                          builder: (context) => ShadDialog(
+                            child: Column(
+                              children: [
+                                Text(
+                                  "No items in cart",
+                                  style: GoogleFonts.imprima(fontSize: 20),
+                                ),
+                                const SizedBox(height: 20),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                    "Close",
+                                    style: GoogleFonts.imprima(fontSize: 20),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                        return;
+                      }
+                      Navigator.pushNamed(context, '/checkout');
                     },
                     style: FilledButton.styleFrom(
                       backgroundColor: Colors.orange,

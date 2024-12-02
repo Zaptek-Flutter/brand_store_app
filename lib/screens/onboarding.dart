@@ -1,28 +1,51 @@
+import 'package:brand_store_app/providers/theme_provider.dart';
 import 'package:brand_store_app/screens/auth/login_screen.dart';
 import 'package:brand_store_app/screens/auth/signup_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
-class Onboarding extends StatelessWidget {
+class Onboarding extends ConsumerWidget {
   const Onboarding({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return Scaffold(
       body: Column(
         children: [
           Expanded(
             flex: 6,
-            child: Container(
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/cover.jpeg"),
-                      fit: BoxFit.cover),
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(50),
-                    bottomLeft: Radius.circular(50),
-                  )),
+            child: Stack(
+              children: [
+                Container(
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("assets/images/cover.jpeg"),
+                          fit: BoxFit.cover),
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(50),
+                        bottomLeft: Radius.circular(50),
+                      )),
+                ),
+                Positioned(
+                  top: 50,
+                  right: 20,
+                  child: ShadSwitch(
+                    value: ref.watch(themeModeProvider) == ThemeMode.dark,
+                    onChanged: (value) {
+                      ref.read(themeModeProvider.notifier).toggleTheme();
+                    },
+                    label: Icon(
+                      ref.watch(themeModeProvider) == ThemeMode.dark
+                          ? Icons.dark_mode
+                          : Icons.light_mode,
+                      color: Theme.of(context).colorScheme.surface,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           Expanded(
@@ -62,11 +85,9 @@ class Onboarding extends StatelessWidget {
                         Expanded(
                           child: OutlinedButton(
                             onPressed: () {
-                              Navigator.push(
+                              Navigator.pushNamed(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => const SignupScreen(),
-                                ),
+                                '/signup',
                               );
                             },
                             style: OutlinedButton.styleFrom(
@@ -93,11 +114,9 @@ class Onboarding extends StatelessWidget {
                         Expanded(
                           child: OutlinedButton(
                             onPressed: () {
-                              Navigator.push(
+                              Navigator.pushNamed(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => const LoginScreen(),
-                                ),
+                                '/login',
                               );
                             },
                             style: OutlinedButton.styleFrom(

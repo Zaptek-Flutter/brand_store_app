@@ -1,19 +1,23 @@
 import 'package:brand_store_app/models/shirt_model.dart';
+import 'package:brand_store_app/providers/cart_provider.dart';
 import 'package:brand_store_app/widgets/animated_price.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:shimmer/shimmer.dart';
 
-class Details extends StatefulWidget {
-  const Details({super.key, required this.shirt});
+class Details extends ConsumerStatefulWidget {
+  const Details({super.key, required this.shirt, required this.tagPrefix});
 
   final ShirtModel shirt;
+  final String tagPrefix;
 
   @override
-  State<Details> createState() => _DetailsState();
+  ConsumerState<Details> createState() => _DetailsState();
 }
 
-class _DetailsState extends State<Details> {
+class _DetailsState extends ConsumerState<Details> {
   int selectedSize = 0;
 
   @override
@@ -55,7 +59,7 @@ class _DetailsState extends State<Details> {
               Expanded(
                 flex: 5,
                 child: Hero(
-                  tag: widget.shirt.image,
+                  tag: widget.tagPrefix + widget.shirt.image,
                   child: (widget.shirt.networkImage == null ||
                           widget.shirt.networkImage! == false)
                       ? ClipRRect(
@@ -119,7 +123,7 @@ class _DetailsState extends State<Details> {
                             child: Padding(
                               padding: const EdgeInsets.only(right: 20),
                               child: Hero(
-                                tag: widget.shirt.name,
+                                tag: widget.tagPrefix + widget.shirt.name,
                                 child: Text(
                                   widget.shirt.name,
                                   softWrap: true,
@@ -182,14 +186,20 @@ class _DetailsState extends State<Details> {
                               backgroundColor:
                                   widget.shirt.sizes?[selectedSize] == e
                                       ? Colors.orange
-                                      : Colors.black,
+                                      : Theme.of(context)
+                                          .colorScheme
+                                          .inverseSurface,
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 20, vertical: 10),
                               shape: const CircleBorder(),
                             ),
                             child: Text(
                               e,
-                              style: GoogleFonts.imprima(fontSize: 20),
+                              style: GoogleFonts.imprima(
+                                  fontSize: 20,
+                                  color: widget.shirt.sizes?[selectedSize] == e
+                                      ? Colors.white
+                                      : Theme.of(context).colorScheme.surface),
                             ),
                           );
                         }).toList(),
@@ -198,14 +208,40 @@ class _DetailsState extends State<Details> {
                       Row(
                         children: [
                           Hero(
-                            tag: widget.shirt.price,
+                            tag: widget.tagPrefix +
+                                widget.shirt.price.toString(),
                             child: AnimatedPrice(
                                 priceString: widget.shirt.price.toString()),
                           ),
                           const Spacer(),
                           FilledButton(
-                            onPressed: () {
-                              //todo: add to cart
+                            onPressed: () async {
+                              ref
+                                  .read(cartProvider.notifier)
+                                  .addItem(widget.shirt);
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return const Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 16),
+                                    child: Center(
+                                      child: ShadDialog(
+                                        title: Text('Adding to Cart'),
+                                        child: ShadProgress(),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                              await Future.delayed(const Duration(seconds: 1));
+                              if (context.mounted) {}
+                              Navigator.pop(context);
+                              ShadToaster.of(context).show(const ShadToast(
+                                title:
+                                    Text("Successfully added one item to cart"),
+                                duration: Duration(milliseconds: 1000),
+                              ));
                               Navigator.pop(context);
                             },
                             style: FilledButton.styleFrom(

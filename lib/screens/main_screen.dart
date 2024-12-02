@@ -16,12 +16,81 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       primary: true,
+      bottomNavigationBar: showBottomNavigationBar(),
       body: IndexedStack(
-        index: 0,
-        children: [Home(), SearchScreen(), Cart(), SettingsScreen()],
+        index: selectedIndex,
+        children: const [Home(), SearchScreen()],
       ),
     );
+  }
+
+  Widget? showBottomNavigationBar() {
+    final myNavBar = Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surface,
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: BottomNavigationBar(
+          elevation: 0,
+          enableFeedback: false,
+          currentIndex: selectedIndex,
+          unselectedItemColor: Theme.of(context).colorScheme.inverseSurface,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedItemColor: Colors.orange,
+          onTap: (index) {
+            setState(() {
+              if (index == 2) {
+                Navigator.pushNamed(context, "/cart");
+                return;
+              }
+              if (index == 3) {
+                Navigator.pushNamed(context, '/settings');
+                return;
+              }
+              selectedIndex = index;
+            });
+          },
+          items: const [
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage("assets/icons/home.png"),
+              ),
+              label: "Home",
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage("assets/icons/search.png"),
+              ),
+              label: "Search",
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage("assets/icons/bag.png"),
+              ),
+              label: "Cart",
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage("assets/icons/settings.png"),
+              ),
+              label: "Settings",
+            ),
+          ]),
+    );
+    switch (selectedIndex) {
+      case 0:
+        return myNavBar;
+      case 1:
+        return myNavBar;
+      case 2:
+        return null;
+      case 3:
+        return myNavBar;
+      default:
+        return myNavBar;
+    }
   }
 }

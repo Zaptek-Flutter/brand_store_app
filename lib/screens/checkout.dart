@@ -1,22 +1,26 @@
-import 'package:brand_store_app/screens/home.dart';
+import 'package:brand_store_app/providers/cart_provider.dart';
+import 'package:brand_store_app/screens/main_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
-class Checkout extends StatefulWidget {
+class Checkout extends ConsumerStatefulWidget {
   const Checkout({super.key});
 
   @override
-  State<Checkout> createState() => _CheckoutState();
+  ConsumerState<Checkout> createState() => _CheckoutState();
 }
 
-class _CheckoutState extends State<Checkout> {
+class _CheckoutState extends ConsumerState<Checkout> {
   @override
   Widget build(BuildContext context) {
+    final cartItems = ref.watch(cartProvider);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        foregroundColor: Theme.of(context).colorScheme.inverseSurface,
         elevation: 0,
         forceMaterialTransparency: true,
         toolbarHeight: 100,
@@ -34,7 +38,7 @@ class _CheckoutState extends State<Checkout> {
           ),
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 40),
         child: Column(
@@ -42,7 +46,12 @@ class _CheckoutState extends State<Checkout> {
           children: [
             Text(
               "Delivery Address",
-              style: GoogleFonts.imprima(fontSize: 12, color: Colors.grey),
+              style: GoogleFonts.imprima(
+                  fontSize: 12,
+                  color: Theme.of(context)
+                      .colorScheme
+                      .inverseSurface
+                      .withOpacity(0.7)),
             ),
             Row(
               children: [
@@ -69,7 +78,9 @@ class _CheckoutState extends State<Checkout> {
                               softWrap: true,
                               style: GoogleFonts.imprima(
                                   fontSize: 15,
-                                  color: Colors.black,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .inverseSurface,
                                   fontWeight: FontWeight.w600),
                             ),
                           ),
@@ -96,7 +107,9 @@ class _CheckoutState extends State<Checkout> {
                 ),
                 Text(
                   "Delivered in next 7 days",
-                  style: GoogleFonts.imprima(fontSize: 15, color: Colors.black),
+                  style: GoogleFonts.imprima(
+                    fontSize: 15,
+                  ),
                 ),
               ],
             ),
@@ -105,7 +118,12 @@ class _CheckoutState extends State<Checkout> {
             ),
             Text(
               "Payment Method",
-              style: GoogleFonts.imprima(fontSize: 12, color: Colors.grey),
+              style: GoogleFonts.imprima(
+                  fontSize: 12,
+                  color: Theme.of(context)
+                      .colorScheme
+                      .inverseSurface
+                      .withOpacity(0.7)),
             ),
             const SizedBox(
               height: 10,
@@ -143,7 +161,10 @@ class _CheckoutState extends State<Checkout> {
                 "Add Voucher",
                 style: GoogleFonts.imprima(
                   fontSize: 15,
-                  color: Colors.black.withOpacity(0.7),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .inverseSurface
+                      .withOpacity(0.7),
                 ),
               ),
             ),
@@ -163,7 +184,10 @@ class _CheckoutState extends State<Checkout> {
                     text: "Use your order id at the payment. Your Id ",
                     style: GoogleFonts.imprima(
                       fontSize: 15,
-                      color: Colors.grey,
+                      color: Theme.of(context)
+                          .colorScheme
+                          .inverseSurface
+                          .withOpacity(0.7),
                       fontWeight: FontWeight.w300,
                     ),
                   ),
@@ -171,7 +195,6 @@ class _CheckoutState extends State<Checkout> {
                     text: "#154619",
                     style: GoogleFonts.imprima(
                       fontSize: 15,
-                      color: Colors.black,
                       fontWeight: FontWeight.w300,
                     ),
                   ),
@@ -180,7 +203,10 @@ class _CheckoutState extends State<Checkout> {
                         " if you forget to put your order id we can’t confirm the payment.",
                     style: GoogleFonts.imprima(
                       fontSize: 15,
-                      color: Colors.grey,
+                      color: Theme.of(context)
+                          .colorScheme
+                          .inverseSurface
+                          .withOpacity(0.7),
                       fontWeight: FontWeight.w300,
                     ),
                   ),
@@ -190,18 +216,22 @@ class _CheckoutState extends State<Checkout> {
             const Spacer(),
             Column(
               children: [
+                const Divider(),
                 Row(
                   children: [
                     Text(
-                      "Total Items (3)",
+                      "Total Items (${cartItems.length})",
                       style: GoogleFonts.imprima(
-                        color: Colors.black.withOpacity(0.7),
+                        color: Theme.of(context)
+                            .colorScheme
+                            .inverseSurface
+                            .withOpacity(0.7),
                         fontSize: MediaQuery.textScalerOf(context).scale(15),
                       ),
                     ),
                     const Spacer(),
                     Text(
-                      '\$ 150.00',
+                      '\$ ${(ref.watch(cartProvider.notifier).totalCost).toStringAsFixed(2)}',
                       style: GoogleFonts.imprima(
                           fontSize: 20, fontWeight: FontWeight.bold),
                     )
@@ -215,7 +245,10 @@ class _CheckoutState extends State<Checkout> {
                     Text(
                       "Standard Delivery",
                       style: GoogleFonts.imprima(
-                        color: Colors.black.withOpacity(0.7),
+                        color: Theme.of(context)
+                            .colorScheme
+                            .inverseSurface
+                            .withOpacity(0.7),
                         fontSize: MediaQuery.textScalerOf(context).scale(15),
                       ),
                     ),
@@ -235,13 +268,16 @@ class _CheckoutState extends State<Checkout> {
                     Text(
                       "Total Payment",
                       style: GoogleFonts.imprima(
-                        color: Colors.black.withOpacity(0.7),
+                        color: Theme.of(context)
+                            .colorScheme
+                            .inverseSurface
+                            .withOpacity(0.7),
                         fontSize: MediaQuery.textScalerOf(context).scale(15),
                       ),
                     ),
                     const Spacer(),
                     Text(
-                      '\$ 162.00',
+                      '\$ ${(ref.watch(cartProvider.notifier).totalCost + 12).toStringAsFixed(2)}',
                       style: GoogleFonts.imprima(
                           fontSize: 20, fontWeight: FontWeight.bold),
                     )
@@ -254,35 +290,32 @@ class _CheckoutState extends State<Checkout> {
                   child: FilledButton(
                     onPressed: () async {
                       showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              title: const Text("Payment"),
-                              backgroundColor: Colors.white,
-                              content: const Text("Payment Successful"),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: const Text("OK"),
-                                )
-                              ],
-                            );
-                          }).then((onValue) async {
-                        showDialog(
-                          context: context,
-                          builder: (context) => const Center(
-                              child: CircularProgressIndicator(
-                            color: Colors.white,
-                          )),
-                        );
-                        await Future.delayed(const Duration(seconds: 2));
-                        if (mounted) {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Home()));
-                        }
-                      });
+                        context: context,
+                        builder: (context) {
+                          return const Center(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 16),
+                              child: ShadDialog(
+                                title: Text("Processing Payment"),
+                                child: ShadProgress(),
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                      await Future.delayed(const Duration(seconds: 1));
+                      ref.read(cartProvider.notifier).clearCart();
+                      if (!context.mounted) return;
+                      ShadToaster.of(context).show(
+                        const ShadToast(
+                          title: Text("Paymemt Successful"),
+                          duration: Duration(milliseconds: 1000),
+                        ),
+                      );
+                      Navigator.of(context)
+                          .popUntil(ModalRoute.withName('/main'));
+                      // Navigator.of(context)
+                      //     .pushNamedAndRemoveUntil('/main', (route) => false);
                     },
                     style: FilledButton.styleFrom(
                       backgroundColor: Colors.orange,
@@ -293,7 +326,7 @@ class _CheckoutState extends State<Checkout> {
                       ),
                     ),
                     child: Text(
-                      "Pay Now",
+                      "Check Out",
                       style: GoogleFonts.imprima(
                         color: Colors.white,
                         fontSize: 20,

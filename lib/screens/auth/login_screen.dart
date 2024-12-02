@@ -31,9 +31,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
         if (mounted) {
           // Navigate to HomeScreen after successful login
-          Navigator.pushReplacement(
+          Navigator.pushReplacementNamed(
             context,
-            MaterialPageRoute(builder: (context) => const MainScreen()),
+            '/main',
           );
         }
       } catch (e) {
@@ -129,12 +129,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         Align(
                           alignment: Alignment.centerRight,
                           child: ShadButton.ghost(
-                            onPressed: () => Navigator.push(
+                            onPressed: () => Navigator.pushNamed(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const ResetPasswordScreen(),
-                              ),
+                              '/reset-password',
                             ),
                             child: const Text('Forgot Password?'),
                           ),

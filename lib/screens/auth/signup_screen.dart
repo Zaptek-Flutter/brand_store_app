@@ -37,9 +37,9 @@ class _SignupScreenState extends State<SignupScreen> {
 
         if (mounted) {
           // Navigate to HomeScreen after successful sign-up and login
-          Navigator.pushReplacement(
+          Navigator.pushReplacementNamed(
             context,
-            MaterialPageRoute(builder: (context) => const MainScreen()),
+            '/main',
           );
         }
       } catch (e) {
@@ -150,11 +150,9 @@ class _SignupScreenState extends State<SignupScreen> {
                       ShadButton.ghost(
                         child: const Text('Sign In'),
                         onPressed: () {
-                          Navigator.pushReplacement(
+                          Navigator.pushReplacementNamed(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => const LoginScreen(),
-                            ),
+                            '/login',
                           );
                         },
                       )
