@@ -31,7 +31,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     return ShadApp(
-      title: 'Brand Store App',
+      title: 'Fashion Hub',
       themeMode: ref.watch(themeModeProvider),
       theme: ShadThemeData(
           colorScheme: const ShadOrangeColorScheme.light(),
