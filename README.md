@@ -37,6 +37,18 @@ Live preview [Click to view](https://thefashionhub.web.app/)
 
 ---
 
+## Screenshots
+
+Below are paired screenshots for light and dark themes, arranged side by side. Each row contains
+four screenshots.
+
+| ![Cart Light](assets/screenshots/Cart_light.webp)           | ![Cart Dark](assets/screenshots/Cart_Dark.webp)         | ![Checkout Light](assets/screenshots/checkout_light.webp)       | ![Checkout Dark](assets/screenshots/Checkout_dark.webp)     |
+|-------------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------------------|-------------------------------------------------------------|
+| ![Details Light](assets/screenshots/Details_light.webp)     | ![Details Dark](assets/screenshots/Details_dark.webp)   | ![Explore Light](assets/screenshots/Explore%20light.webp)       | ![Explore Dark](assets/screenshots/Explore_dark.webp)       |
+| ![Login Light](assets/screenshots/Login%20Light.webp)       | ![Login Dark](assets/screenshots/Login_Dark.webp)       | ![Onboarding Light](assets/screenshots/Onboarding%20Light.webp) | ![Onboarding Dark](assets/screenshots/Onboarding_Dark.webp) |
+| ![Reset Light](assets/screenshots/Reset%20light.webp)       | ![Reset Dark](assets/screenshots/Reset_Dark.webp)       | ![Search Light](assets/screenshots/Search%20light.webp)         | ![Search Dark](assets/screenshots/Search_dark.webp)         |
+| ![Settings Light](assets/screenshots/Settings%20light.webp) | ![Settings Dark](assets/screenshots/Settings_dark.webp) | ![Sign Up Light](assets/screenshots/Sign_Up_light.webp)         | ![Sign Up Dark](assets/screenshots/Sign_Up_dark.webp)       |
+
 ## Screen Recordings
 
 Screen recordings are available in the `assets/screenrecords` folder for a visual demonstration of
@@ -70,17 +82,4 @@ the features:
       light and dark themes and logs out.
 
 ---
-
-## Screenshots
-
-Below are paired screenshots for light and dark themes, arranged side by side. Each row contains
-four screenshots.
-
-| ![Cart Light](assets/screenshots/Cart_light.webp)           | ![Cart Dark](assets/screenshots/Cart_Dark.webp)         | ![Checkout Light](assets/screenshots/checkout_light.webp)       | ![Checkout Dark](assets/screenshots/Checkout_dark.webp)     |
-|-------------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------------------|-------------------------------------------------------------|
-| ![Details Light](assets/screenshots/Details_light.webp)     | ![Details Dark](assets/screenshots/Details_dark.webp)   | ![Explore Light](assets/screenshots/Explore%20light.webp)       | ![Explore Dark](assets/screenshots/Explore_dark.webp)       |
-| ![Login Light](assets/screenshots/Login%20Light.webp)       | ![Login Dark](assets/screenshots/Login_Dark.webp)       | ![Onboarding Light](assets/screenshots/Onboarding%20Light.webp) | ![Onboarding Dark](assets/screenshots/Onboarding_Dark.webp) |
-| ![Reset Light](assets/screenshots/Reset%20light.webp)       | ![Reset Dark](assets/screenshots/Reset_Dark.webp)       | ![Search Light](assets/screenshots/Search%20light.webp)         | ![Search Dark](assets/screenshots/Search_dark.webp)         |
-| ![Settings Light](assets/screenshots/Settings%20light.webp) | ![Settings Dark](assets/screenshots/Settings_dark.webp) | ![Sign Up Light](assets/screenshots/Sign_Up_light.webp)         | ![Sign Up Dark](assets/screenshots/Sign_Up_dark.webp)       |
-
 
