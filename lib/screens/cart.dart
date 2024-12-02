@@ -1,5 +1,3 @@
-import 'package:brand_store_app/data/shirt.dart';
-import 'package:brand_store_app/models/shirt_model.dart';
 import 'package:brand_store_app/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,14 +14,12 @@ class Cart extends ConsumerStatefulWidget {
 }
 
 class _CartState extends ConsumerState<Cart> {
-  final List<ShirtModel> selectedItems = Shirt.allItems();
   final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
 
   void _removeItem(int index, ref) {
     final removedItem = ref.read(cartProvider)[index];
-    ref.read(cartProvider.notifier).removeItem(removedItem);
+    ref.read(cartProvider.notifier).removeItem(removedItem.shirt);
     // Remove the item from the list with an animation
-    selectedItems.removeAt(index);
     _listKey.currentState?.removeItem(
       index,
       (context, animation) {

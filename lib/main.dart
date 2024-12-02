@@ -1,6 +1,7 @@
 import 'package:brand_store_app/firebase_options.dart';
 import 'package:brand_store_app/models/shirt_model.dart';
 import 'package:brand_store_app/providers/theme_provider.dart';
+import 'package:brand_store_app/screens/auth/auth_gate.dart';
 import 'package:brand_store_app/screens/auth/login_screen.dart';
 import 'package:brand_store_app/screens/auth/reset_password_screen.dart';
 import 'package:brand_store_app/screens/auth/signup_screen.dart';
@@ -96,7 +97,7 @@ class MyApp extends ConsumerWidget {
           builder: (context) => const MainScreen(),
         );
       },
-      home: const Onboarding(),
+      home: const AuthGate(),
     );
   }
 }
