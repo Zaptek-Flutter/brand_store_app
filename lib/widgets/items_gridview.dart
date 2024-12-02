@@ -17,8 +17,8 @@ class ItemsGridview extends StatelessWidget {
       itemCount: selectedItems.length,
       crossAxisSpacing: 25,
       mainAxisSpacing: 10,
-      gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2),
+      gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: MediaQuery.sizeOf(context).width > 600 ? 3 : 2),
       itemBuilder: (context, index) {
         final selectedShirt = selectedItems[index];
         return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -33,38 +33,44 @@ class ItemsGridview extends StatelessWidget {
                         borderRadius: BorderRadius.circular(25),
                         child: Image.asset(selectedShirt.image),
                       )
-                    : ClipRRect(
-                        borderRadius: BorderRadius.circular(25),
-                        child: Stack(
-                          children: [
-                            Container(
-                              height: 200,
-                              // Replace with your actual height
-                              width: double.infinity,
-                              color: Theme.of(context).canvasColor,
-                            ),
-                            Image.network(
-                              selectedShirt.image
-                                  .replaceAll('/1.png', '/thumbnail.png'),
-                              fit: BoxFit.cover,
-                              loadingBuilder:
-                                  (context, child, loadingProgress) {
-                                if (loadingProgress == null) {
-                                  return child; // Image fully loaded
-                                }
-                                return Shimmer.fromColors(
-                                  baseColor: Colors.grey[300]!,
-                                  highlightColor: Colors.grey[100]!,
-                                  child: Container(
-                                    height: 200,
-                                    // Replace with your actual height
-                                    width: double.infinity,
-                                    color: Colors.grey[300],
-                                  ),
-                                );
-                              },
-                            ),
-                          ],
+                    : Center(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(25),
+                          child: Stack(
+                            children: [
+                              Center(
+                                child: Container(
+                                  height: 200,
+                                  // Replace with your actual height
+                                  width: double.infinity,
+                                  color: Theme.of(context).canvasColor,
+                                ),
+                              ),
+                              Center(
+                                child: Image.network(
+                                  selectedShirt.image
+                                      .replaceAll('/1.png', '/thumbnail.png'),
+                                  fit: BoxFit.cover,
+                                  loadingBuilder:
+                                      (context, child, loadingProgress) {
+                                    if (loadingProgress == null) {
+                                      return child; // Image fully loaded
+                                    }
+                                    return Shimmer.fromColors(
+                                      baseColor: Colors.grey[300]!,
+                                      highlightColor: Colors.grey[100]!,
+                                      child: Container(
+                                        height: 200,
+                                        // Replace with your actual height
+                                        width: double.infinity,
+                                        color: Colors.grey[300],
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                 Positioned(
