@@ -1,6 +1,4 @@
 import 'package:brand_store_app/core/util/validators.dart';
-import 'package:brand_store_app/screens/auth/login_screen.dart';
-import 'package:brand_store_app/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';

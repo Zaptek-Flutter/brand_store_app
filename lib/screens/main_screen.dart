@@ -1,7 +1,5 @@
-import 'package:brand_store_app/screens/cart.dart';
 import 'package:brand_store_app/screens/home.dart';
 import 'package:brand_store_app/screens/search_screen.dart';
-import 'package:brand_store_app/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {

@@ -235,7 +235,7 @@ class _DetailsState extends ConsumerState<Details> {
                                 },
                               );
                               await Future.delayed(const Duration(seconds: 1));
-                              if (context.mounted) {}
+                              if (!context.mounted) return;
                               Navigator.pop(context);
                               ShadToaster.of(context).show(const ShadToast(
                                 title:

@@ -1,12 +1,8 @@
 import 'package:brand_store_app/data/shirt.dart';
 import 'package:brand_store_app/models/shirt_model.dart';
-import 'package:brand_store_app/screens/cart.dart';
-import 'package:brand_store_app/screens/details.dart';
 import 'package:brand_store_app/widgets/items_gridview.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shimmer/shimmer.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

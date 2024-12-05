@@ -54,32 +54,61 @@ four screenshots.
 Screen recordings are available in the `assets/screenrecords` folder for a visual demonstration of
 the features:
 
-1. **Authentication Screens**:
-    - [`Auth Screens.mp4`](assets/screenrecords/Auth%20Screens.webm): Demonstrates Login, Sign Up,
-      Reset Password, and logging into an existing account.
+### 1. Authentication Screens
 
-2. **Explore Tab (Light Theme)**:
-    - [`Explore_Light_Theme.mp4`](assets/screenrecords/Explore%20Light%20Theme.webm): Browse items
-      and
-      add a selected
-      item to the cart.
-
-3. **Cart and Deletion (Light Theme)**:
-    - [`Cart_And_Deletion_Light_Theme.mp4`](assets/screenrecords/Cart%20And%20Deletion%20Light%20Theme.webm):
-      View items in the cart and delete them.
-
-4. **Search Functionality (Light Theme)**:
-    - [`Search_Light_Theme.mp4`](assets/screenrecords/Search%20Light%20Theme.webm): Walkthrough of
-      the
-      search functionality, including category-based search.
-
-5. **Checkout Process**:
-    - [`Checkout.mp4`](assets/screenrecords/Checkout.webm): Demonstrates the checkout flow.
-
-6. **Light and Dark Themes**:
-    - [`Light_And_Dark_Theme.mp4`](assets/screenrecords/Light%20And%20Dark%20Theme.webm): Toggles
-      between
-      light and dark themes and logs out.
+<video controls width="100%" style="max-width: 600px;">
+  <source src="assets/screenrecords/Auth%20Screens.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+*Demonstrates Login, Sign Up, Reset Password, and logging into an existing account.*
 
 ---
+
+### 2. Explore Tab (Light Theme)
+
+<video controls width="100%" style="max-width: 600px;">
+  <source src="assets/screenrecords/Explore%20Light%20Theme.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+*Browse items and add a selected item to the cart.*
+
+---
+
+### 3. Cart and Deletion (Light Theme)
+
+<video controls width="100%" style="max-width: 600px;">
+  <source src="assets/screenrecords/Cart%20And%20Deletion%20Light%20Theme.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+*View items in the cart and delete them.*
+
+---
+
+### 4. Search Functionality (Light Theme)
+
+<video controls width="100%" style="max-width: 600px;">
+  <source src="assets/screenrecords/Search%20Light%20Theme.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+*Walkthrough of the search functionality, including category-based search.*
+
+---
+
+### 5. Checkout Process
+
+<video controls width="100%" style="max-width: 600px;">
+  <source src="assets/screenrecords/Checkout.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+*Demonstrates the checkout flow.*
+
+---
+
+### 6. Light and Dark Themes
+
+<video controls width="100%" style="max-width: 600px;">
+  <source src="assets/screenrecords/Light%20And%20Dark%20Theme.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+*Toggles between light and dark themes and logs out.*
 

@@ -1,6 +1,4 @@
 import 'package:brand_store_app/providers/theme_provider.dart';
-import 'package:brand_store_app/screens/auth/login_screen.dart';
-import 'package:brand_store_app/screens/auth/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';

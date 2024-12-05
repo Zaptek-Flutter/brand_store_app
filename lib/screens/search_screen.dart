@@ -103,7 +103,7 @@ class _HomeState extends State<SearchScreen> {
                       // Real-time search
                       decoration: InputDecoration(
                         hintText: "Search...",
-                        prefixIcon: Icon(Icons.search),
+                        prefixIcon: const Icon(Icons.search),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),

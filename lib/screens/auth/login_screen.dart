@@ -1,10 +1,8 @@
 import 'package:brand_store_app/core/util/validators.dart';
-import 'package:brand_store_app/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import '../../services/auth_service.dart';
-import 'reset_password_screen.dart';
 import 'signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {

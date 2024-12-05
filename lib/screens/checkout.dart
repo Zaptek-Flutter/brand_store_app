@@ -1,5 +1,4 @@
 import 'package:brand_store_app/providers/cart_provider.dart';
-import 'package:brand_store_app/screens/main_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -312,10 +311,11 @@ class _CheckoutState extends ConsumerState<Checkout> {
                           duration: Duration(milliseconds: 1000),
                         ),
                       );
-                      Navigator.of(context)
-                          .popUntil(ModalRoute.withName('/main'));
+                      // Navigator.of(context)
+                      //     .popUntil(ModalRoute.withName('/main'));
                       // Navigator.of(context)
                       //     .pushNamedAndRemoveUntil('/main', (route) => false);
+                      Navigator.of(context).popUntil((route) => route.isFirst);
                     },
                     style: FilledButton.styleFrom(
                       backgroundColor: Colors.orange,

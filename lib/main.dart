@@ -47,7 +47,9 @@ class MyApp extends ConsumerWidget {
         '/login': (context) => const LoginScreen(),
         '/signup': (context) => const SignupScreen(),
         '/reset-password': (context) => const ResetPasswordScreen(),
+        '/auth-gate': (context) => const AuthGate(),
       },
+      initialRoute: '/auth-gate',
       onGenerateRoute: (settings) {
         if (settings.name == '/details') {
           final args = settings.arguments as Map<String, dynamic>;
@@ -91,10 +93,14 @@ class MyApp extends ConsumerWidget {
           return MaterialPageRoute(
             builder: (context) => const Onboarding(),
           );
+        } else if (settings.name == '/auth-gate') {
+          return MaterialPageRoute(
+            builder: (context) => const AuthGate(),
+          );
         }
         // Default fallback route
         return MaterialPageRoute(
-          builder: (context) => const MainScreen(),
+          builder: (context) => const AuthGate(),
         );
       },
       home: const AuthGate(),
