@@ -57,7 +57,7 @@ the features:
 ### 1. Authentication Screens
 
 <video controls width="100%" style="max-width: 600px;">
-  <source src="assets/screenrecords/Auth%20Screens.webm" type="video/webm">
+  <source src="assets/screenrecords/Auth_Screens.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 *Demonstrates Login, Sign Up, Reset Password, and logging into an existing account.*
@@ -67,7 +67,7 @@ the features:
 ### 2. Explore Tab (Light Theme)
 
 <video controls width="100%" style="max-width: 600px;">
-  <source src="assets/screenrecords/Explore%20Light%20Theme.webm" type="video/webm">
+  <source src="assets/screenrecords/Explore_Light_Theme.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 *Browse items and add a selected item to the cart.*
@@ -77,7 +77,7 @@ the features:
 ### 3. Cart and Deletion (Light Theme)
 
 <video controls width="100%" style="max-width: 600px;">
-  <source src="assets/screenrecords/Cart%20And%20Deletion%20Light%20Theme.webm" type="video/webm">
+  <source src="assets/screenrecords/Cart_And_Deletion_Light_Theme.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 *View items in the cart and delete them.*
@@ -87,7 +87,7 @@ the features:
 ### 4. Search Functionality (Light Theme)
 
 <video controls width="100%" style="max-width: 600px;">
-  <source src="assets/screenrecords/Search%20Light%20Theme.webm" type="video/webm">
+  <source src="assets/screenrecords/Search_Light_Theme.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 *Walkthrough of the search functionality, including category-based search.*
@@ -97,7 +97,7 @@ the features:
 ### 5. Checkout Process
 
 <video controls width="100%" style="max-width: 600px;">
-  <source src="assets/screenrecords/Checkout.webm" type="video/webm">
+  <source src="assets/screenrecords/Checkout.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 *Demonstrates the checkout flow.*
@@ -107,7 +107,7 @@ the features:
 ### 6. Light and Dark Themes
 
 <video controls width="100%" style="max-width: 600px;">
-  <source src="assets/screenrecords/Light%20And%20Dark%20Theme.webm" type="video/webm">
+  <source src="assets/screenrecords/Light_And_Dark_Theme.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 *Toggles between light and dark themes and logs out.*
