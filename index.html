@@ -36,31 +36,29 @@
         }
 
         /* Container for videos */
-        .video-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 20px;
-        }
+        .video-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
 
-        .video-container {
-          background-color: #1e1e1e;
-          border-radius: 10px;
-          padding: 10px;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-          overflow: hidden;
-          transform: scale(1);
-          transition: transform 0.3s, box-shadow 0.3s;
-        }
+.video-item {
+  text-align: center;
+}
 
-        .video-container:hover {
-          transform: scale(1.05);
-          box-shadow: 0 6px 10px rgba(0, 0, 0, 0.8);
-        }
+video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px; /* Add rounded corners if needed */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Optional shadow for aesthetic */
+}
 
-        video {
-          width: 100%;
-          border-radius: 5px;
-        }
+video:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+  transition: transform 0.3s ease-in-out;
+}
+
 
         /* Buttons and Interactivity */
         button {
@@ -189,7 +187,7 @@
 <div class="video-grid">
     <div class="video-container">
         <h3>Authentication Screens</h3>
-        <video controls>
+        <video autoplay loop muted>
             <source src="assets/screenrecords/Auth%20Screens.mov" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -197,7 +195,7 @@
     </div>
     <div class="video-container">
         <h3>Explore Tab (Light Theme)</h3>
-        <video controls>
+        <video autoplay loop muted>
             <source src="assets/screenrecords/Explore%20Light%20Theme.mov" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -205,7 +203,7 @@
     </div>
     <div class="video-container">
         <h3>Cart and Deletion (Light Theme)</h3>
-        <video controls>
+        <video autoplay loop muted>
             <source src="assets/screenrecords/Cart%20And%20Deletion%20Light%20Theme.mov"
                     type="video/mp4">
             Your browser does not support the video tag.
@@ -214,7 +212,7 @@
     </div>
     <div class="video-container">
         <h3>Search Functionality (Light Theme)</h3>
-        <video controls>
+        <video autoplay loop muted>
             <source src="assets/screenrecords/Search%20Light%20Theme.mov" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -222,7 +220,7 @@
     </div>
     <div class="video-container">
         <h3>Checkout Process</h3>
-        <video controls>
+        <video autoplay loop muted>
             <source src="assets/screenrecords/Checkout.mov" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -230,7 +228,7 @@
     </div>
     <div class="video-container">
         <h3>Light and Dark Themes</h3>
-        <video controls>
+        <video autoplay loop muted>
             <source src="assets/screenrecords/Light%20And%20Dark%20Theme.mov" type="video/mp4">
             Your browser does not support the video tag.
         </video>
