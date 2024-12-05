@@ -55,7 +55,7 @@ Screen recordings are available in the `assets/screenrecords` folder for a visua
 the features:
 
 1. **Authentication Screens**:
-    - [Auth Screens.mov](assets/screenrecords/Auth%20Screens.mov): Demonstrates Login, Sign Up,
+    - [`Auth Screens.mov`](assets/screenrecords/Auth%20Screens.mov): Demonstrates Login, Sign Up,
       Reset Password, and logging into an existing account.
 
 2. **Explore Tab (Light Theme)**:
