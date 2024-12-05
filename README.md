@@ -55,9 +55,8 @@ Screen recordings are available in the `assets/screenrecords` folder for a visua
 the features:
 
 1. **Authentication Screens**:
-    - [`Auth Screens.mov`](assets/screenrecords/Auth%20Screens.mov): Demonstrates Login, Sign Up,
+    - [Auth Screens.mov](assets/screenrecords/Auth%20Screens.mov): Demonstrates Login, Sign Up,
       Reset Password, and logging into an existing account.
-    - https://github.com/Zaptek-Flutter/brand_store_app/blob/main/assets/screenrecords/Auth_Screens.mp4
 
 2. **Explore Tab (Light Theme)**:
     - [`Explore_Light_Theme.mov`](assets/screenrecords/Explore%20Light%20Theme.mov): Browse items
