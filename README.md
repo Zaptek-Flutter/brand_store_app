@@ -1,85 +1,109 @@
-# Fashion Hub
+# 🌟 Fashion Hub 🌟
 
 **Fashion Hub** is a sleek brand store application built with Flutter. It offers features like
 authentication, a cart system, light and dark themes, and a search functionality for a seamless
 shopping experience. With a modern UI inspired by [shadcn_ui](https://pub.dev/packages/shadcn_ui),
 the app ensures a user-friendly interface.
 
-Live preview [Click to view](https://thefashionhub.web.app/)
+[Live Preview](https://thefashionhub.web.app/)
 
 ---
 
 ## Features
 
-- **Authentication**:
-    - Login, Sign-Up, and Reset Password screens.
-    - Firebase Authentication for secure user management.
-
-- **Cart System**:
-    - Add items to the cart.
-    - Delete items from the cart using the `slidable` package.
-
-- **Light and Dark Themes**:
-    - Easily toggle between themes for a customized user experience.
-
-- **Search Functionality**:
-    - Search items within a category by name.
-    - Realtime updates with local data.
-
-- **Hero Animations**:
-    - Smooth transitions for a polished UI.
-
-- **State Management**:
-    - Managed efficiently with the `riverpod` package.
-
-- **Loading Shimmer Effects**:
-    - Visual enhancements for loading states.
+- **Authentication**: Login, Sign-Up, and Reset Password screens with Firebase Authentication.
+- **Cart System**: Add and delete items using the slidable package.
+- **Light and Dark Themes**: Toggle between themes effortlessly.
+- **Search Functionality**: Search items by category or name with real-time updates.
+- **Hero Animations**: Smooth transitions for a polished UI.
+- **State Management**: Managed efficiently with Riverpod.
+- **Loading Shimmer Effects**: Enhance the user experience during loading states.
 
 ---
 
 ## Screenshots
 
-Below are paired screenshots for light and dark themes, arranged side by side. Each row contains
-four screenshots.
-
-| ![Cart Light](assets/screenshots/Cart_light.webp)           | ![Cart Dark](assets/screenshots/Cart_Dark.webp)         | ![Checkout Light](assets/screenshots/checkout_light.webp)       | ![Checkout Dark](assets/screenshots/Checkout_dark.webp)     |
-|-------------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------------------|-------------------------------------------------------------|
-| ![Details Light](assets/screenshots/Details_light.webp)     | ![Details Dark](assets/screenshots/Details_dark.webp)   | ![Explore Light](assets/screenshots/Explore%20light.webp)       | ![Explore Dark](assets/screenshots/Explore_dark.webp)       |
-| ![Login Light](assets/screenshots/Login%20Light.webp)       | ![Login Dark](assets/screenshots/Login_Dark.webp)       | ![Onboarding Light](assets/screenshots/Onboarding%20Light.webp) | ![Onboarding Dark](assets/screenshots/Onboarding_Dark.webp) |
-| ![Reset Light](assets/screenshots/Reset%20light.webp)       | ![Reset Dark](assets/screenshots/Reset_Dark.webp)       | ![Search Light](assets/screenshots/Search%20light.webp)         | ![Search Dark](assets/screenshots/Search_dark.webp)         |
-| ![Settings Light](assets/screenshots/Settings%20light.webp) | ![Settings Dark](assets/screenshots/Settings_dark.webp) | ![Sign Up Light](assets/screenshots/Sign_Up_light.webp)         | ![Sign Up Dark](assets/screenshots/Sign_Up_dark.webp)       |
-
-## Screen Recordings
-
-Screen recordings are available in the `assets/screenrecords` folder for a visual demonstration of
-the features:
-
-1. **Authentication Screens**:
-    - [`Auth Screens.mov`](assets/screenrecords/Auth%20Screens.mov): Demonstrates Login, Sign Up,
-      Reset Password, and logging into an existing account.
-
-2. **Explore Tab (Light Theme)**:
-    - [`Explore_Light_Theme.mov`](assets/screenrecords/Explore%20Light%20Theme.mov): Browse items
-      and
-      add a selected
-      item to the cart.
-
-3. **Cart and Deletion (Light Theme)**:
-    - [`Cart_And_Deletion_Light_Theme.mov`](assets/screenrecords/Cart%20And%20Deletion%20Light%20Theme.mov):
-      View items in the cart and delete them.
-
-4. **Search Functionality (Light Theme)**:
-    - [`Search_Light_Theme.mov`](assets/screenrecords/Search Light Theme.mov): Walkthrough of
-      the
-      search functionality, including category-based search.
-
-5. **Checkout Process**:
-    - [`Checkout.mov`](assets/screenrecords/Checkout.mov): Demonstrates the checkout flow.
-
-6. **Light and Dark Themes**:
-    - [`Light_And_Dark_Theme.mp4`](assets/screenrecords/Light%20And%20Dark%20Theme.mov): Toggles
-      between
-      light and dark themes and logs out.
+<table>
+    <tr>
+        <td><img src="assets/screenshots/Cart_light.webp" alt="Cart Light"></td>
+        <td><img src="assets/screenshots/Cart_Dark.webp" alt="Cart Dark"></td>
+        <td><img src="assets/screenshots/checkout_light.webp" alt="Checkout Light"></td>
+        <td><img src="assets/screenshots/Checkout_dark.webp" alt="Checkout Dark"></td>
+    </tr>
+    <tr>
+        <td><img src="assets/screenshots/Details_light.webp" alt="Details Light"></td>
+        <td><img src="assets/screenshots/Details_dark.webp" alt="Details Dark"></td>
+        <td><img src="assets/screenshots/Explore%20light.webp" alt="Explore Light"></td>
+        <td><img src="assets/screenshots/Explore_dark.webp" alt="Explore Dark"></td>
+    </tr>
+    <tr>
+        <td><img src="assets/screenshots/Login%20Light.webp" alt="Login Light"></td>
+        <td><img src="assets/screenshots/Login_Dark.webp" alt="Login Dark"></td>
+        <td><img src="assets/screenshots/Onboarding%20Light.webp" alt="Onboarding Light"></td>
+        <td><img src="assets/screenshots/Onboarding_Dark.webp" alt="Onboarding Dark"></td>
+    </tr>
+    <tr>
+        <td><img src="assets/screenshots/Reset%20light.webp" alt="Reset Light"></td>
+        <td><img src="assets/screenshots/Reset_Dark.webp" alt="Reset Dark"></td>
+        <td><img src="assets/screenshots/Search%20light.webp" alt="Search Light"></td>
+        <td><img src="assets/screenshots/Search_dark.webp" alt="Search Dark"></td>
+    </tr>
+    <tr>
+        <td><img src="assets/screenshots/Settings%20light.webp" alt="Settings Light"></td>
+        <td><img src="assets/screenshots/Settings_dark.webp" alt="Settings Dark"></td>
+        <td><img src="assets/screenshots/Sign_Up_light.webp" alt="Sign Up Light"></td>
+        <td><img src="assets/screenshots/Sign_Up_dark.webp" alt="Sign Up Dark"></td>
+    </tr>
+</table>
 
 ---
 
+## Screen Recordings
+
+### Authentication Screens
+
+<video autoplay loop muted>
+    <source src="assets/screenrecords/Auth%20Screens.mov" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+Login, Sign Up, Reset Password, and login demonstration.
+
+### Explore Tab (Light Theme)
+
+<video autoplay loop muted>
+    <source src="assets/screenrecords/Explore%20Light%20Theme.mov" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+Browse items and add to the cart.
+
+### Cart and Deletion (Light Theme)
+
+<video autoplay loop muted>
+    <source src="assets/screenrecords/Cart%20And%20Deletion%20Light%20Theme.mov" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+View and delete items in the cart.
+
+### Search Functionality (Light Theme)
+
+<video autoplay loop muted>
+    <source src="assets/screenrecords/Search%20Light%20Theme.mov" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+Walkthrough of search functionality, including category-based search.
+
+### Checkout Process
+
+<video autoplay loop muted>
+    <source src="assets/screenrecords/Checkout.mov" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+Demonstrates the checkout flow.
+
+### Light and Dark Themes
+
+<video autoplay loop muted>
+    <source src="assets/screenrecords/Light%20And%20Dark%20Theme.mov" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+Switching between light and dark modes.
